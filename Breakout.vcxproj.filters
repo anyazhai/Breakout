@@ -51,4 +51,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="default.vert">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="default.frag">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
