@@ -19,6 +19,9 @@
     <Filter Include="Resource Files\textures">
       <UniqueIdentifier>{33ed819f-4347-4a12-bddb-f5b664c2dc9d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\levels">
+      <UniqueIdentifier>{ab762138-1bc4-4190-8114-0d2a9ea71c00}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -45,6 +48,12 @@
     <ClCompile Include="sprite_renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="game_object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="game_level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -62,6 +71,12 @@
     <ClInclude Include="sprite_renderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="game_object.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="game_level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -70,9 +85,30 @@
     <None Include="default.vert">
       <Filter>Resource Files\shaders</Filter>
     </None>
+    <None Include="one.lvl">
+      <Filter>Resource Files\levels</Filter>
+    </None>
+    <None Include="two.lvl">
+      <Filter>Resource Files\levels</Filter>
+    </None>
+    <None Include="three.lvl">
+      <Filter>Resource Files\levels</Filter>
+    </None>
+    <None Include="four.lvl">
+      <Filter>Resource Files\levels</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\Chaithanya S\Downloads\ball.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\block.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\block_solid.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\background.jpg">
       <Filter>Resource Files\textures</Filter>
     </Image>
   </ItemGroup>

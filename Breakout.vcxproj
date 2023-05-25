@@ -138,6 +138,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="game_level.cpp" />
+    <ClCompile Include="game_object.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="resource_manager.cpp" />
@@ -148,6 +150,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h" />
+    <ClInclude Include="game_level.h" />
+    <ClInclude Include="game_object.h" />
     <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="sprite_renderer.h" />
@@ -156,9 +160,16 @@
   <ItemGroup>
     <None Include="default.frag" />
     <None Include="default.vert" />
+    <None Include="four.lvl" />
+    <None Include="one.lvl" />
+    <None Include="three.lvl" />
+    <None Include="two.lvl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="C:\Users\Chaithanya S\Downloads\background.jpg" />
     <Image Include="C:\Users\Chaithanya S\Downloads\ball.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\block.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\block_solid.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
