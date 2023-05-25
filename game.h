@@ -15,16 +15,15 @@ enum GameState {
 };
 
 // Game holds all game - related state and functionality. 
-
 class Game
 {
 public:
     // game state
-    GameState               State;
-    bool                    Keys[1024];
-    unsigned int            Width, Height;
-    std::vector<GameLevel> Levels;
-    unsigned int Level;
+    GameState State;
+    bool Keys[1024];
+    unsigned int Width, Height;
+    std::vector<GameLevel> Levels; //data of levels
+    unsigned int Level; //current level
 
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
@@ -37,6 +36,12 @@ public:
     void ProcessInput(float dt);
     void Update(float dt);
     void Render();
+
+    void DoCollisions();
+
+    // reset
+    void ResetLevel();
+    void ResetPlayer();
 };
 
 #endif
