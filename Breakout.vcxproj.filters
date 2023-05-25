@@ -111,5 +111,8 @@
     <Image Include="C:\Users\Chaithanya S\Downloads\background.jpg">
       <Filter>Resource Files\textures</Filter>
     </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\paddle.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

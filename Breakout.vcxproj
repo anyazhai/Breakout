@@ -170,6 +170,7 @@
     <Image Include="C:\Users\Chaithanya S\Downloads\ball.png" />
     <Image Include="C:\Users\Chaithanya S\Downloads\block.png" />
     <Image Include="C:\Users\Chaithanya S\Downloads\block_solid.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\paddle.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
