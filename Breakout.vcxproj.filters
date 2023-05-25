@@ -71,4 +71,9 @@
       <Filter>Resource Files\shaders</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="C:\Users\Chaithanya S\Downloads\ball.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

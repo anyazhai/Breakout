@@ -32,7 +32,6 @@ int main(int argc, char* argv[])
     glfwMakeContextCurrent(window);
 
     // glad: load all OpenGL function pointers
-    // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
         std::cout << "Failed to initialize GLAD" << std::endl;
@@ -43,39 +42,32 @@ int main(int argc, char* argv[])
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
     // OpenGL configuration
-    // --------------------
     glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // initialize game
-    // ---------------
     Breakout.Init();
 
     // deltaTime variables
-    // -------------------
     float deltaTime = 0.0f;
     float lastFrame = 0.0f;
 
     while (!glfwWindowShouldClose(window))
     {
         // calculate delta time
-        // --------------------
         float currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
         glfwPollEvents();
 
         // manage user input
-        // -----------------
         Breakout.ProcessInput(deltaTime);
 
         // update game state
-        // -----------------
         Breakout.Update(deltaTime);
 
         // render
-        // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
         Breakout.Render();
@@ -84,7 +76,6 @@ int main(int argc, char* argv[])
     }
 
     // delete all resources as loaded using the resource manager
-    // ---------------------------------------------------------
     ResourceManager::Clear();
 
     glfwTerminate();
@@ -93,7 +84,6 @@ int main(int argc, char* argv[])
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
-    // when a user presses the escape key, we set the WindowShouldClose property to true, closing the application
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
     if (key >= 0 && key < 1024)
@@ -107,7 +97,5 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
-    // make sure the viewport matches the new window dimensions; note that width and 
-    // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
 }
