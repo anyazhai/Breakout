@@ -158,6 +158,7 @@
     <ClInclude Include="game_object.h" />
     <ClInclude Include="particle_generator.h" />
     <ClInclude Include="post_processor.h" />
+    <ClInclude Include="power_up.h" />
     <ClInclude Include="resource_manager.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="sprite_renderer.h" />
@@ -182,6 +183,12 @@
     <Image Include="C:\Users\Chaithanya S\Downloads\block_solid.png" />
     <Image Include="C:\Users\Chaithanya S\Downloads\paddle.png" />
     <Image Include="C:\Users\Chaithanya S\Downloads\particle.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_chaos.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_confuse.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_increase.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_passthrough.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_speed.png" />
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_sticky.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

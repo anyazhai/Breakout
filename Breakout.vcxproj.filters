@@ -95,6 +95,9 @@
     <ClInclude Include="post_processor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="power_up.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -145,6 +148,24 @@
       <Filter>Resource Files\textures</Filter>
     </Image>
     <Image Include="C:\Users\Chaithanya S\Downloads\particle.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_increase.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_passthrough.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_sticky.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_speed.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_chaos.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\powerup_confuse.png">
       <Filter>Resource Files\textures</Filter>
     </Image>
   </ItemGroup>

@@ -1,5 +1,5 @@
-#ifndef BALL_OBJECT_H
-#define BALL_OBJECT_H
+#ifndef BALLOBJECT_H
+#define BALLOBJECT_H
 
 #include <glad/glad.h>
 #include <glm/glm.hpp>
@@ -8,17 +8,20 @@
 #include "texture.h"
 
 
-//holds the state of the ball
-class BallObject : public GameObject {
-	public:
-		//ball state
-		float Radius;
-		float Stuck;
-
-		BallObject();
-		BallObject(glm::vec2 pos, float radius, glm::vec2 velocity, Texture2D sprite);
-		glm::vec2 Move(float dt, unsigned int window_width);
-		void Reset(glm::vec2 position, glm::vec2 velocity);
+class BallObject : public GameObject
+{
+public:
+    // ball state	
+    float   Radius;
+    bool    Stuck;
+    bool    Sticky, PassThrough;
+    // constructor(s)
+    BallObject();
+    BallObject(glm::vec2 pos, float radius, glm::vec2 velocity, Texture2D sprite);
+   
+    glm::vec2 Move(float dt, unsigned int window_width);
+    // resets the ball to original state with given position and velocity
+    void      Reset(glm::vec2 position, glm::vec2 velocity);
 };
 
 #endif
