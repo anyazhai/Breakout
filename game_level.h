@@ -16,15 +16,15 @@ class GameLevel {
 		//constructor
 		GameLevel() {  }
 
-		//load level from text file
+		// load level from text file
 		void Load(const char* file, unsigned int levelWidth, unsigned int levelHeight);
 		// render level
 		void Draw(SpriteRenderer& renderer);
-		// check if the level is completed (all non-solid tiles are destroyed)
+		// to check if the level is completed (all non-solid tiles are destroyed) or not
 		bool IsCompleted();
 
 	private:
-		//initialise level
+		// initialise level
 		void init(std::vector<std::vector<unsigned int>> tileData,
 			unsigned int levelWidth, unsigned int levelHeight);
 };

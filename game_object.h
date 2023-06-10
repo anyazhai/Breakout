@@ -7,11 +7,12 @@
 #include "texture.h"
 #include "sprite_renderer.h"
 
+//to render each of the objects that are included in the game
 class GameObject {
 	public:
 		glm::vec2 Position, Size, Velocity;
 		glm::vec3 Color;
-		float Rotation;
+		float Rotation; //the brick is desstroyable or not
 		bool IsSolid;
 		bool Destroyed;
 		

@@ -33,6 +33,7 @@ void GameLevel::Load(const char* file, unsigned int levelWidth, unsigned int lev
 void GameLevel::Draw(SpriteRenderer& renderer)
 {
 	for (GameObject& tile : this->Bricks)
+        //render only if the brick isn't yet destroyed
 		if (!tile.Destroyed)
 			tile.Draw(renderer);
 }
@@ -68,6 +69,10 @@ void GameLevel::init(std::vector<std::vector<unsigned int>> tileData, unsigned i
                 obj.IsSolid = true;
                 this->Bricks.push_back(obj);
             }
+            /*number 0: no brick, an empty space within the level.
+              number 1: a solid brick, a brick that cannot be destroyed.
+              number higher than 1: a destroyable brick */
+
             else if (tileData[y][x] > 1)	// non-solid. determine its color based on level data
             {
                 glm::vec3 color = glm::vec3(1.0f); // original: white

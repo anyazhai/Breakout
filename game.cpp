@@ -2,24 +2,34 @@
 #include "resource_manager.h"
 #include "sprite_renderer.h"
 #include "ball_object.h"
+#include "particle_generator.h"
+#include "post_processor.h"
 
 
 //State data
 SpriteRenderer* Renderer;
+//particle
+ParticleGenerator* Particles;
+
+//effects
+PostProcessor* Effects;
+
 // Initial size of the player paddle
 const glm::vec2 PLAYER_SIZE(130.0f, 30.0f);
 // Initial velocity of the player paddle
-const float PLAYER_VELOCITY(500.0f);
+const float PLAYER_VELOCITY(600.0f);
 //player object
 GameObject* Player;
 
 // Initial velocity of the Ball
-const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
+const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -400.0f);
 // Radius of the ball object
 const float BALL_RADIUS = 14.4f;
 
 BallObject* Ball;
 
+
+float ShakeTime = 0.0f;
 
 //direction for collion detection
 enum Direction {
@@ -42,26 +52,39 @@ Game::Game(unsigned int width, unsigned int height)
 Game::~Game()
 {
     delete Renderer;
+    delete Player;
+    delete Ball;
+    delete Particles;
+    delete Effects;
 }
 
 void Game::Init()
 {
     // load shaders
     ResourceManager::LoadShader("default.vert", "default.frag", nullptr, "sprite");
+    ResourceManager::LoadShader("particle.vert", "particle.frag", nullptr, "particle");
+    ResourceManager::LoadShader("post_processing.vert", "post_processing.frag", nullptr, "postprocessing");
     // configure shaders
     glm::mat4 projection = glm::ortho(0.0f, static_cast<float>(this->Width),
         static_cast<float>(this->Height), 0.0f, -1.0f, 1.0f);
     ResourceManager::GetShader("sprite").Use().SetInteger("image", 0);
     ResourceManager::GetShader("sprite").SetMatrix4("projection", projection);
+    ResourceManager::GetShader("particle").Use().SetInteger("sprite", 0);
+    ResourceManager::GetShader("particle").SetMatrix4("projection", projection);
+
     // set render-specific controls
     Renderer = new SpriteRenderer(ResourceManager::GetShader("sprite"));
+    Particles = new ParticleGenerator(ResourceManager::GetShader("particle"), ResourceManager::GetTexture("particle"), 500);
+    Effects = new PostProcessor(ResourceManager::GetShader("postprocessing"), this->Width, this->Height);
 
     // load textures
     ResourceManager::LoadTexture("background.jpg", false, "background");
+    ResourceManager::LoadTexture("particle.png", true, "particle");
     ResourceManager::LoadTexture("ball.png", true, "ball");
     ResourceManager::LoadTexture("block.png", false, "block");
     ResourceManager::LoadTexture("block_solid.png", false, "block_solid");
     ResourceManager::LoadTexture("paddle.png", true, "paddle");
+    ResourceManager::LoadTexture("particle.png", true, "particle");
 
     // load levels
     GameLevel one; one.Load("one.lvl", this->Width, this->Height / 2);
@@ -95,12 +118,21 @@ void Game::Update(float dt)
     // check for collisions
     this->DoCollisions();
 
+    Particles->Update(dt, *Ball, 2, glm::vec2(Ball->Radius / 2.0f));
+
+    if (ShakeTime > 0.0f)
+    {
+        ShakeTime -= dt;
+        if (ShakeTime <= 0.0f)
+            Effects->Shake = false;
+    }
     //reset on bottom edge of screen collide
     if (Ball->Position.y >= this->Height) // did ball reach bottom edge?
     {
         this->ResetLevel();
         this->ResetPlayer();
     }
+    
 }
 
 void Game::ProcessInput(float dt)
@@ -135,7 +167,8 @@ void Game::ProcessInput(float dt)
 void Game::Render()
 {
     if (this->State == GAME_ACTIVE)
-    {
+    {   
+        Effects->BeginRender();
         // draw background
         Renderer->DrawSprite(ResourceManager::GetTexture("background"),
             glm::vec2(0.0f, 0.0f), glm::vec2(this->Width, this->Height), 0.0f
@@ -143,7 +176,10 @@ void Game::Render()
         // draw level
         this->Levels[this->Level].Draw(*Renderer);
         Player->Draw(*Renderer);
+        Particles->Draw();
         Ball->Draw(*Renderer);
+        Effects->EndRender();
+        Effects->Render(glfwGetTime());
     }
 }
 
@@ -168,7 +204,6 @@ void Game::ResetPlayer()
     Ball->Reset(Player->Position + glm::vec2(PLAYER_SIZE.x / 2.0f - BALL_RADIUS, -(BALL_RADIUS * 2.0f)), INITIAL_BALL_VELOCITY);
 }
 
-
 // collision detection
 bool CheckCollision(GameObject& one, GameObject& two);
 Collision CheckCollision(BallObject& one, GameObject& two);
@@ -186,6 +221,11 @@ void Game::DoCollisions()
                 // destroy block if not solid
                 if (!box.IsSolid)
                     box.Destroyed = true;
+                else
+                {   // if block is solid, enable shake effect
+                    ShakeTime = 0.05f;
+                    Effects->Shake = true;
+                }
                 // collision resolution
                 Direction dir = std::get<1>(collision);
                 glm::vec2 diff_vector = std::get<2>(collision);

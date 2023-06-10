@@ -7,7 +7,7 @@
 
 #include"game_level.h"
 
-// Represents the current state of the game
+// Represents the current state of the game - there are three states in total
 enum GameState {
     GAME_ACTIVE,
     GAME_MENU,
@@ -22,19 +22,21 @@ public:
     GameState State;
     bool Keys[1024];
     unsigned int Width, Height;
-    std::vector<GameLevel> Levels; //data of levels
-    unsigned int Level; //current level
+    //data of levels
+    std::vector<GameLevel> Levels;
+    //current level
+    unsigned int Level; 
 
     // constructor/destructor
     Game(unsigned int width, unsigned int height);
     ~Game();
 
-    // initialize game state (load all shaders/textures/levels)
+    // initialize game state (to load all shaders, textures, levels)
     void Init();
 
     // game loop
-    void ProcessInput(float dt);
-    void Update(float dt);
+    void ProcessInput(float dt); //input is from the keys array
+    void Update(float dt); //updation of gameplay moments
     void Render();
 
     void DoCollisions();

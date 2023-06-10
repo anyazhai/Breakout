@@ -57,6 +57,12 @@
     <ClCompile Include="ball_object.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="particle_generator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="post_processor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game.h">
@@ -83,6 +89,12 @@
     <ClInclude Include="ball_object.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="particle_generator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="post_processor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.frag">
@@ -103,6 +115,18 @@
     <None Include="four.lvl">
       <Filter>Resource Files\levels</Filter>
     </None>
+    <None Include="particle.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="particle.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="post_processing.frag">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
+    <None Include="post_processing.vert">
+      <Filter>Resource Files\shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="C:\Users\Chaithanya S\Downloads\ball.png">
@@ -118,6 +142,9 @@
       <Filter>Resource Files\textures</Filter>
     </Image>
     <Image Include="C:\Users\Chaithanya S\Downloads\paddle.png">
+      <Filter>Resource Files\textures</Filter>
+    </Image>
+    <Image Include="C:\Users\Chaithanya S\Downloads\particle.png">
       <Filter>Resource Files\textures</Filter>
     </Image>
   </ItemGroup>
