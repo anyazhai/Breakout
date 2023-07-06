@@ -42,10 +42,10 @@ void GameLevel::Draw(SpriteRenderer& renderer)
 bool GameLevel::IsCompleted()
 {
 	//for each tile in Bricks vector run the loop
-	for (GameObject& tile : this->Bricks)
-		if (!tile.IsSolid && !tile.Destroyed)
-			return false;
-	return true;
+    for (GameObject& tile : this->Bricks)
+        if (!tile.IsSolid && !tile.Destroyed)
+            return false;
+    return true;
 }
 
 
